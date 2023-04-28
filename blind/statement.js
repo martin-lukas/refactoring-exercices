@@ -11,7 +11,7 @@ function statement(invoice) {
     const priceSummary = `Amount owed is ${toUsd(statementInvoice.totalPrice)}`;
     const volumeCreditsSummary = `You earned ${statementInvoice.volumeCredits} credits`;
 
-    return [heading, orderLines.join("\n"), priceSummary, volumeCreditsSummary,].join("\n");
+    return [heading, ...orderLines, priceSummary, volumeCreditsSummary,].join("\n");
 }
 
 console.log(statement(invoices[0]))
