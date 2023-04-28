@@ -46,7 +46,9 @@ function calculateVolumeCredits (playType, audience) {
 }
 
 function statement(invoice, plays) {
-    let result = `Statement for ${invoice.customer}\n`;
+    const heading = `Statement for ${invoice.customer}`;
+
+    let orderLines = [];
 
     let totalPrice = 0;
     let volumeCredits = 0;
@@ -59,12 +61,18 @@ function statement(invoice, plays) {
 
         totalPrice += playPrice;
 
-        // add line for this order
-        result += `  ${play.name}: ${toUsd(playPrice / 100)} (${perf.audience} seats)\n`;
+        orderLines.push(`  ${play.name}: ${toUsd(playPrice / 100)} (${perf.audience} seats)`);
     }
-    result += `Amount owed is ${toUsd(totalPrice / 100)}\n`;
-    result += `You earned ${volumeCredits} credits\n`;
-    return result;
+
+    const priceSummary = `Amount owed is ${toUsd(totalPrice / 100)}`;
+    const volumeCreditsSummary = `You earned ${volumeCredits} credits`;
+
+    return [
+        heading,
+        orderLines.join("\n"),
+        priceSummary,
+        volumeCreditsSummary
+    ].join("\n");
 }
 
 console.log(statement(invoices[0], plays))
