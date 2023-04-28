@@ -1,5 +1,5 @@
 import plays from "../plays.json" assert { type: "json" };
-import { calculatePlayPrice, calculateVolumeCredits } from "./statement.js"
+import { calculatePlayPrice, calculateVolumeCredits } from "./playMath.js"
 
 function enrichPerformance(performance) {
     const play = plays[performance.playID];
