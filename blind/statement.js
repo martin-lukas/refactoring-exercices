@@ -46,9 +46,10 @@ function calculateVolumeCredits (playType, audience) {
 }
 
 function statement(invoice, plays) {
-    let totalAmount = 0;
-    let volumeCredits = 0;
     let result = `Statement for ${invoice.customer}\n`;
+
+    let totalPrice = 0;
+    let volumeCredits = 0;
 
     for (let perf of invoice.performances) {
         const play = plays[perf.playID];
@@ -56,11 +57,12 @@ function statement(invoice, plays) {
 
         volumeCredits += calculateVolumeCredits(play.type, perf.audience);
 
-        // print line for this order
+        totalPrice += playPrice;
+
+        // add line for this order
         result += `  ${play.name}: ${toUsd(playPrice / 100)} (${perf.audience} seats)\n`;
-        totalAmount += playPrice;
     }
-    result += `Amount owed is ${toUsd(totalAmount / 100)}\n`;
+    result += `Amount owed is ${toUsd(totalPrice / 100)}\n`;
     result += `You earned ${volumeCredits} credits\n`;
     return result;
 }
