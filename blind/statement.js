@@ -1,14 +1,9 @@
 import invoices from "../invoices.json" assert { type: "json" };
 import plays from "../plays.json" assert { type: "json" };
+import { toUsd } from "./currency.js"
 import { toStatementInvoice } from "./invoiceTransform.js"
 
-function toUsd(value) {
-    return new Intl.NumberFormat("en-US", {
-        style: "currency", currency: "USD",
-        minimumFractionDigits: 2
-    }).format(value);
-}
-
+// playEconomics.js
 function calculateTragedyPrice(audience) {
     let sum = 40000;
     if (audience > 30) {
