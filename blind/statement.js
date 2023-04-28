@@ -13,7 +13,7 @@ function calculateTragedyPrice(audience) {
     if (audience > 30) {
         sum += 1000 * (audience - 30);
     }
-    return sum;
+    return sum / 100;
 }
 
 function calculateComedyPrice(audience) {
@@ -22,7 +22,7 @@ function calculateComedyPrice(audience) {
         sum += 10000 + 500 * (audience - 20);
     }
     sum += 300 * audience;
-    return sum;
+    return sum / 100;
 }
 
 function calculatePlayPrice(playType, audience) {
@@ -61,10 +61,10 @@ function statement(invoice, plays) {
 
         totalPrice += playPrice;
 
-        orderLines.push(`  ${play.name}: ${toUsd(playPrice / 100)} (${perf.audience} seats)`);
+        orderLines.push(`  ${play.name}: ${toUsd(playPrice)} (${perf.audience} seats)`);
     }
 
-    const priceSummary = `Amount owed is ${toUsd(totalPrice / 100)}`;
+    const priceSummary = `Amount owed is ${toUsd(totalPrice)}`;
     const volumeCreditsSummary = `You earned ${volumeCredits} credits`;
 
     return [
