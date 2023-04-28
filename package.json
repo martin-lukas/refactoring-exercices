@@ -1,0 +1,10 @@
+{
+  "name": "ch1-theater-statement",
+  "version": "1.0.0",
+  "main": "statement.js",
+  "type": "module",
+  "scripts": {
+    "start": "node statement.js",
+    "start-blind": "node blind/statement.js"
+  }
+}
