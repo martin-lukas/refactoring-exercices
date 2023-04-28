@@ -1,5 +1,6 @@
-import invoices from '../invoices.json' assert { type: 'json' };
-import plays from '../plays.json' assert { type: 'json' };
+import invoices from "../invoices.json" assert { type: "json" };
+import plays from "../plays.json" assert { type: "json" };
+import { toStatementInvoice } from "./invoiceTransform.js"
 
 function toUsd(value) {
     return new Intl.NumberFormat("en-US", {
@@ -25,7 +26,7 @@ function calculateComedyPrice(audience) {
     return sum / 100;
 }
 
-function calculatePlayPrice(playType, audience) {
+export function calculatePlayPrice(playType, audience) {
     switch (playType) {
         case "tragedy":
             return calculateTragedyPrice(audience);
@@ -36,7 +37,7 @@ function calculatePlayPrice(playType, audience) {
     }
 }
 
-function calculateVolumeCredits (playType, audience) {
+export function calculateVolumeCredits(playType, audience) {
     let sum = Math.max(audience - 30, 0);
     // add extra credit for every ten comedy attendees
     if (playType === "comedy") {
@@ -75,4 +76,20 @@ function statement(invoice, plays) {
     ].join("\n");
 }
 
+function statement2(invoice) {
+    const statementInvoice = toStatementInvoice(invoice);
+
+    const heading = `Statement for ${statementInvoice.customer}`
+    const orderLines = statementInvoice.performances.map(perf =>
+        `  ${perf.play}: ${toUsd(perf.price)} (${perf.audience} seats)`)
+    const priceSummary = `Amount owed is ${toUsd(statementInvoice.totalPrice)}`;
+    const volumeCreditsSummary = `You earned ${statementInvoice.volumeCredits} credits`;
+
+    return [heading, orderLines.join("\n"), priceSummary, volumeCreditsSummary,].join("\n");
+}
+
+console.log("Old")
 console.log(statement(invoices[0], plays))
+
+console.log("New")
+console.log(statement2(invoices[0]))
