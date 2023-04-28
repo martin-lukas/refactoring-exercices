@@ -8,6 +8,32 @@ function toUsd(value) {
     }).format(value);
 }
 
+function calculateTragedyPrice(audience) {
+    let sum = 40000;
+    if (audience > 30) {
+        sum += 1000 * (audience - 30);
+    }
+    return sum;
+}
+
+function calculateComedyPrice(audience) {
+    let sum = 30000;
+    if (audience > 20) {
+        sum += 10000 + 500 * (audience - 20);
+    }
+    sum += 300 * audience;
+    return sum;
+}
+
+function calculateVolumeCredits (playType, audience) {
+    let sum = Math.max(audience - 30, 0);
+    // add extra credit for every ten comedy attendees
+    if (playType === "comedy") {
+        sum += Math.floor(audience / 5);
+    }
+    return sum;
+}
+
 function statement(invoice, plays) {
     let totalAmount = 0;
     let volumeCredits = 0;
@@ -19,26 +45,16 @@ function statement(invoice, plays) {
 
         switch (play.type) {
             case "tragedy":
-                thisAmount = 40000;
-                if (perf.audience > 30) {
-                    thisAmount += 1000 * (perf.audience - 30);
-                }
+                thisAmount = calculateTragedyPrice(perf.audience);
                 break;
             case "comedy":
-                thisAmount = 30000;
-                if (perf.audience > 20) {
-                    thisAmount += 10000 + 500 * (perf.audience - 20);
-                }
-                thisAmount += 300 * perf.audience;
+                thisAmount = calculateComedyPrice(perf.audience);
                 break;
             default:
                 throw new Error(`unknown type: ${play.type}`);
         }
 
-        // add volume credits
-        volumeCredits += Math.max(perf.audience - 30, 0);
-        // add extra credit for every ten comedy attendees
-        if ("comedy" === play.type) volumeCredits += Math.floor(perf.audience / 5);
+        volumeCredits += calculateVolumeCredits(play.type, perf.audience);
 
         // print line for this order
         result += `  ${play.name}: ${toUsd(thisAmount / 100)} (${perf.audience} seats)\n`;
