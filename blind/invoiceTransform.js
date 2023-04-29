@@ -11,7 +11,7 @@ function enrichPerformance(performance) {
     };
 }
 
-export function toStatementInvoice(invoice) {
+export function toStatement(invoice) {
     const enrichedPerformances = invoice.performances.map(enrichPerformance);
     return {
         customer: invoice.customer,

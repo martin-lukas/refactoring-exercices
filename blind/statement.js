@@ -1,17 +1,17 @@
 import invoices from "../invoices.json" assert { type: "json" };
 import { toUsd } from "./currency.js"
-import { toStatementInvoice } from "./invoiceTransform.js"
+import { toStatement } from "./invoiceTransform.js"
 
-function toRawStatement(invoice) {
-    const statementInvoice = toStatementInvoice(invoice);
-
-    const heading = `Statement for ${statementInvoice.customer}`
-    const orderLines = statementInvoice.performances.map(perf =>
+function toRawStatement(statement) {
+    const heading = `Statement for ${statement.customer}`
+    const orderLines = statement.performances.map(perf =>
         `  ${perf.play}: ${toUsd(perf.price)} (${perf.audience} seats)`)
-    const priceSummary = `Amount owed is ${toUsd(statementInvoice.totalPrice)}`;
-    const volumeCreditsSummary = `You earned ${statementInvoice.volumeCredits} credits`;
+    const priceSummary = `Amount owed is ${toUsd(statement.totalPrice)}`;
+    const volumeCreditsSummary = `You earned ${statement.volumeCredits} credits`;
 
     return [heading, ...orderLines, priceSummary, volumeCreditsSummary,].join("\n");
 }
 
-console.log(toRawStatement(invoices[0]))
+const statement = toStatement(invoices[0])
+
+console.log(toRawStatement(statement))
