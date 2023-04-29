@@ -2,7 +2,7 @@ import invoices from "../invoices.json" assert { type: "json" };
 import { toUsd } from "./currency.js"
 import { toStatementInvoice } from "./invoiceTransform.js"
 
-function statement(invoice) {
+function toRawStatement(invoice) {
     const statementInvoice = toStatementInvoice(invoice);
 
     const heading = `Statement for ${statementInvoice.customer}`
@@ -14,4 +14,4 @@ function statement(invoice) {
     return [heading, ...orderLines, priceSummary, volumeCreditsSummary,].join("\n");
 }
 
-console.log(statement(invoices[0]))
+console.log(toRawStatement(invoices[0]))
