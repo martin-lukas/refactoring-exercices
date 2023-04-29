@@ -12,6 +12,13 @@ function toPlainTextStatement(statement) {
     return [heading, ...orderLines, priceSummary, volumeCreditsSummary,].join("\n");
 }
 
+function toHtmlStatement(statement) {
+    const heading = `Statement for ${statement.customer}`
+    return `<html><head><title>${heading}</title></head><body><h1>${heading}</h1><ul>${statement.performances.map(perf => `<li>${perf.play}: ${toUsd(perf.price)} (${perf.audience} seats)</li>`).join("")}</ul><p>Amount owed is ${toUsd(statement.totalPrice)}</p><p>You earned ${statement.volumeCredits} credits</p></body></html>`;
+}
+
 const statement = toStatement(invoices[0])
 
 console.log(toPlainTextStatement(statement))
+console.log()
+console.log(toHtmlStatement(statement))
