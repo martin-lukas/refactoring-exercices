@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node statement.js",
-    "start-blind": "node blind/statement.js"
+    "start-blind": "node blind/statement.js",
+    "start-tutorial": "node blind/statement.js"
   }
 }
