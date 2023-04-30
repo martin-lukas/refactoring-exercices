@@ -1,3 +1,5 @@
+const plays = require('../mocks/plays');
+
 function forPlay(perf) {
     return plays[perf.playID];
 }

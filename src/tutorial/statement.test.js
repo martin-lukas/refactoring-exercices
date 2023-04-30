@@ -1,3 +1,4 @@
+require('../mocks/plays');
 const statement = require('./statement');
 
 const defaultInvoice = {
@@ -14,6 +15,8 @@ const defaultPlays = {
     someTragedy: { name: "Some Tragedy", type: "tragedy" },
     anotherComedy: { name: "Another Comedy", type: "comedy" }
 };
+
+jest.mock('../mocks/plays', () => defaultPlays);
 
 test('Statement should output the correct text on default inputs', () => {
     const outputStatement = statement(defaultInvoice, defaultPlays);
