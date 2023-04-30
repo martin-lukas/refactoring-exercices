@@ -52,8 +52,8 @@ function volumeCreditsFor(performance) {
     return result;
 }
 
-function playFor(perf) {
-    return plays[perf.playID];
+function playFor(performance) {
+    return plays[performance.playID];
 }
 
 module.exports = statement;
