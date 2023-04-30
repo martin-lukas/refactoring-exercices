@@ -2,7 +2,6 @@
   "name": "ch1-theater-statement",
   "version": "1.0.0",
   "main": "src/statement.js",
-  "type": "module",
   "scripts": {
     "start": "node src/statement.js",
     "start-blind": "node src/blind/statement.js",

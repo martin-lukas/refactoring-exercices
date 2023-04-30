@@ -1,4 +1,4 @@
-import invoices from "../mocks/invoices.json" assert { type: "json" };
+import invoices from "../mocks/invoices.js" assert { type: "json" };
 import { toUsd } from "./currency.js"
 import { toStatement } from "./invoiceTransform.js"
 

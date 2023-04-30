@@ -1,5 +1,5 @@
-import invoices from './mocks/invoices.json' assert { type: 'json' };
-import plays from './mocks/plays.json' assert { type: 'json' };
+import invoices from './mocks/invoices.js' assert { type: 'json' };
+import plays from './mocks/plays.js' assert { type: 'json' };
 
 function statement (invoice, plays) {
     let totalAmount = 0;

@@ -1,6 +1,3 @@
-import invoices from '../mocks/invoices.json' assert { type: 'json' };
-import plays from '../mocks/plays.json' assert { type: 'json' };
-
 function statement(invoice, plays) {
     let totalAmount = 0;
     let volumeCredits = 0;
@@ -46,4 +43,4 @@ function statement(invoice, plays) {
     return result;
 }
 
-console.log(statement(invoices[0], plays))
+module.exports = statement;

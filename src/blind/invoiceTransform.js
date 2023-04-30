@@ -1,4 +1,4 @@
-import plays from "../mocks/plays.json" assert { type: "json" };
+import plays from "../mocks/plays.js" assert { type: "json" };
 import { calculatePlayPrice, calculateVolumeCredits } from "./playMath.js"
 
 function enrichPerformance(performance) {

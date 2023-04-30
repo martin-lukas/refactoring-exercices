@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     "customer": "BigCo",
     "performances": [
@@ -16,4 +16,4 @@
       }
     ]
   }
-]
+];
