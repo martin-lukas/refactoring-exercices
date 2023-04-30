@@ -1,5 +1,4 @@
 const statement = require('./statement');
-const plays = require('../mocks/plays')
 
 const defaultInvoice = {
     "customer": "BigCo",
@@ -19,7 +18,13 @@ const defaultInvoice = {
     ]
 };
 
+const defaultPlays = {
+    "hamlet": {"name": "Hamlet", "type": "tragedy"},
+    "as-like": {"name": "As You Like It", "type": "comedy"},
+    "othello": {"name": "Othello", "type": "tragedy"}
+};
+
 test('Test example', () => {
     // Write your test logic here
-    expect(statement(defaultInvoice, plays)).not.toBeNull();
+    expect(statement(defaultInvoice, defaultPlays)).not.toBeNull();
 });
