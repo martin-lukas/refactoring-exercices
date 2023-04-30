@@ -4,8 +4,7 @@
   "main": "src/ch1-theater-statement/statement.js",
   "scripts": {
     "start": "node src/ch1-theater-statement/statement.js",
-    "start-blind": "node src/ch1-theater-statement/blind/statement.js",
-    "start-tutorial": "node src/ch1-theater-statement/tutorial/statement.js",
+    "start-ch1-blind": "node src/ch1-theater-statement/blind/statement.js",
     "test": "jest"
   },
   "devDependencies": {
