@@ -19,7 +19,7 @@ const defaultPlays = {
 jest.mock('../mocks/plays', () => defaultPlays);
 
 test('Statement should output the correct text on default inputs', () => {
-    const outputStatement = statement(defaultInvoice, defaultPlays);
+    const outputStatement = statement(defaultInvoice);
     expect(outputStatement).not.toBeNull();
     const outputLines = outputStatement.split('\n');
     expect(outputLines[0]).toBe(`Statement for Customer A`);
