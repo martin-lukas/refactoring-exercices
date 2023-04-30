@@ -1,17 +1,17 @@
 const plays = require('../mocks/plays');
 
 function statement(invoice) {
-    let totalAmount = 0;
-    let volumeCredits = 0;
     let result = `Statement for ${invoice.customer}\n`;
 
     // total price for plays
+    let totalAmount = 0;
     for (let perf of invoice.performances) {
         result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
         totalAmount += amountFor(perf);
     }
 
     // total volume credits
+    let volumeCredits = 0;
     for (let perf of invoice.performances) {
         volumeCredits += volumeCreditsFor(perf);
     }
