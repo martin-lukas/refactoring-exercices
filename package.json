@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/statement.js",
     "start-blind": "node src/blind/statement.js",
-    "start-tutorial": "node src/tutorial/statement.js"
+    "start-tutorial": "node src/tutorial/statement.js",
+    "test": "jest"
   },
   "devDependencies": {
     "jest": "^29.5.0"
