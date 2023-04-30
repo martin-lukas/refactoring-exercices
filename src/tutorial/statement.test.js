@@ -15,7 +15,15 @@ const defaultPlays = {
     anotherComedy: { name: "Another Comedy", type: "comedy" }
 };
 
-test('Test example', () => {
-    // Write your test logic here
-    expect(statement(defaultInvoice, defaultPlays)).not.toBeNull();
+test('Statement should output the correct text on default inputs', () => {
+    const outputStatement = statement(defaultInvoice, defaultPlays);
+    expect(outputStatement).not.toBeNull();
+    const outputLines = outputStatement.split('\n');
+    expect(outputLines[0]).toBe(`Statement for Customer A`);
+    expect(outputLines[1]).toBe(`  Some Comedy: $740.00 (55 seats)`);
+    expect(outputLines[2]).toBe(`  Some Tragedy: $450.00 (35 seats)`);
+    expect(outputLines[3]).toBe(`  Another Comedy: $620.00 (40 seats)`);
+    expect(outputLines[4]).toBe(`Amount owed is $1,810.00`);
+    expect(outputLines[5]).toBe(`You earned 59 credits`);
+    expect(outputLines[6]).toBe("");
 });
