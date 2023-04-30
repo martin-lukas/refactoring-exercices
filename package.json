@@ -1,11 +1,11 @@
 {
   "name": "ch1-theater-statement",
   "version": "1.0.0",
-  "main": "src/statement.js",
+  "main": "src/ch1-theater-statement/statement.js",
   "scripts": {
-    "start": "node src/statement.js",
-    "start-blind": "node src/blind/statement.js",
-    "start-tutorial": "node src/tutorial/statement.js",
+    "start": "node src/ch1-theater-statement/statement.js",
+    "start-blind": "node src/ch1-theater-statement/blind/statement.js",
+    "start-tutorial": "node src/ch1-theater-statement/tutorial/statement.js",
     "test": "jest"
   },
   "devDependencies": {
