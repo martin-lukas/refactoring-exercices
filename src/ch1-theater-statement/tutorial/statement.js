@@ -12,8 +12,8 @@ function renderPlainText(data, invoice) {
     for (let perf of data.performances) {
         result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
     }
-    result += `Amount owed is ${usd(totalAmount(invoice.performances))}\n`;
-    result += `You earned ${volumeCredits(invoice.performances)} credits\n`;
+    result += `Amount owed is ${usd(totalAmount(data.performances))}\n`;
+    result += `You earned ${volumeCredits(data.performances)} credits\n`;
     return result;
 }
 
