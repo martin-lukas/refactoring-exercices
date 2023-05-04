@@ -17,7 +17,7 @@ function enrichPerformance(performance) {
 function renderPlainText(data) {
     let result = `Statement for ${data.customer}\n`;
     for (let perf of data.performances) {
-        result += `  ${perf.play.name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
+        result += `  ${perf.play.name}: ${usd(perf.amount / 100)} (${perf.audience} seats)\n`;
     }
     result += `Amount owed is ${usd(totalAmount(data.performances))}\n`;
     result += `You earned ${volumeCredits(data.performances)} credits\n`;
@@ -50,7 +50,7 @@ function amountFor(performance) {
 function totalAmount(performances) {
     let totalAmount = 0;
     for (let perf of performances) {
-        totalAmount += amountFor(perf);
+        totalAmount += perf.amount;
     }
     return totalAmount / 100;
 }
