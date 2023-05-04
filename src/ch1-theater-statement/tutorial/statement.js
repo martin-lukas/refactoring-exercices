@@ -51,19 +51,11 @@ function amountFor(performance) {
 }
 
 function totalAmount(performances) {
-    let totalAmount = 0;
-    for (let perf of performances) {
-        totalAmount += perf.amount;
-    }
-    return totalAmount;
+    return performances.reduce((acc, perf) => acc + perf.amount, 0);
 }
 
 function totalVolumeCredits(performances) {
-    let result = 0;
-    for (let perf of performances) {
-        result += perf.volumeCredits;
-    }
-    return result;
+    return performances.reduce((acc, perf) => acc + perf.volumeCredits, 0);
 }
 
 function volumeCreditsFor(performance) {
