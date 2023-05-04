@@ -41,7 +41,7 @@ function amountFor(performance) {
             result += 300 * performance.audience;
             break;
         default:
-            throw new Error(`unknown type: ${play.type}`);
+            throw new Error(`unknown type: ${performance.play.type}`);
     }
     return result;
 }
