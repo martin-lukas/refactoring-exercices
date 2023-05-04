@@ -17,7 +17,7 @@ function enrichPerformance(performance) {
 function renderPlainText(data) {
     let result = `Statement for ${data.customer}\n`;
     for (let perf of data.performances) {
-        result += `  ${perf.play.name}: ${usd(perf.amount / 100)} (${perf.audience} seats)\n`;
+        result += `  ${perf.play.name}: ${usd(perf.amount)} (${perf.audience} seats)\n`;
     }
     result += `Amount owed is ${usd(totalAmount(data.performances))}\n`;
     result += `You earned ${volumeCredits(data.performances)} credits\n`;
@@ -44,7 +44,7 @@ function amountFor(performance) {
         default:
             throw new Error(`unknown type: ${performance.play.type}`);
     }
-    return result;
+    return result / 100;
 }
 
 function totalAmount(performances) {
@@ -52,7 +52,7 @@ function totalAmount(performances) {
     for (let perf of performances) {
         totalAmount += perf.amount;
     }
-    return totalAmount / 100;
+    return totalAmount;
 }
 
 function volumeCredits(performances) {
