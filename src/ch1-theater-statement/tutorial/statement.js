@@ -1,12 +1,17 @@
 const plays = require('../mocks/plays');
 
 function statement(invoice) {
+    const statementData = createStatementData(invoice);
+    return renderPlainText(statementData);
+}
+
+function createStatementData(invoice) {
     const statementData = {};
     statementData.customer = invoice.customer;
     statementData.performances = invoice.performances.map(enrichPerformance);
     statementData.totalAmount = totalAmount(statementData.performances);
     statementData.totalVolumeCredits = totalVolumeCredits(statementData.performances);
-    return renderPlainText(statementData);
+    return statementData;
 }
 
 function enrichPerformance(performance) {
