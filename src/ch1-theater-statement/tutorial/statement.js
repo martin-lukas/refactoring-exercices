@@ -16,7 +16,7 @@ function enrichPerformance(performance) {
 function renderPlainText(data) {
     let result = `Statement for ${data.customer}\n`;
     for (let perf of data.performances) {
-        result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
+        result += `  ${perf.play.name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
     }
     result += `Amount owed is ${usd(totalAmount(data.performances))}\n`;
     result += `You earned ${volumeCredits(data.performances)} credits\n`;
