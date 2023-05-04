@@ -3,7 +3,8 @@ const plays = require('../mocks/plays');
 function statement(invoice) {
     const statementData = {};
     statementData.customer = invoice.customer;
-    statementData.performances = invoice.performances.map(enrichPerformance)
+    statementData.performances = invoice.performances.map(enrichPerformance);
+    statementData.totalAmount = totalAmount(statementData.performances);
     return renderPlainText(statementData);
 }
 
@@ -19,7 +20,7 @@ function renderPlainText(data) {
     for (let perf of data.performances) {
         result += `  ${perf.play.name}: ${usd(perf.amount)} (${perf.audience} seats)\n`;
     }
-    result += `Amount owed is ${usd(totalAmount(data.performances))}\n`;
+    result += `Amount owed is ${usd(data.totalAmount)}\n`;
     result += `You earned ${volumeCredits(data.performances)} credits\n`;
     return result;
 }
