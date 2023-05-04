@@ -26,7 +26,7 @@ function renderPlainText(data) {
 function amountFor(performance) {
     let result = 0;
 
-    switch (playFor(performance).type) {
+    switch (performance.play.type) {
         case "tragedy":
             result = 40000;
             if (performance.audience > 30) {
