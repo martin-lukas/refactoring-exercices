@@ -1,8 +1,7 @@
 const plays = require('../mocks/plays');
 
 function statement(invoice) {
-    const statementData = createStatementData(invoice);
-    return renderPlainText(statementData);
+    return renderPlainText(createStatementData(invoice));
 }
 
 function createStatementData(invoice) {
