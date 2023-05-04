@@ -21,6 +21,7 @@ jest.mock('../mocks/plays', () => defaultPlays);
 test('Statement should output the correct text on default inputs', () => {
     const outputStatement = statement(defaultInvoice);
     expect(outputStatement).not.toBeNull();
+    console.log(outputStatement)
     const outputLines = outputStatement.split('\n');
     expect(outputLines[0]).toBe(`Statement for Customer A`);
     expect(outputLines[1]).toBe(`  Some Comedy: $740.00 (55 seats)`);
