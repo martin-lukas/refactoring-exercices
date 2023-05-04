@@ -5,6 +5,7 @@ function statement(invoice) {
     statementData.customer = invoice.customer;
     statementData.performances = invoice.performances.map(enrichPerformance);
     statementData.totalAmount = totalAmount(statementData.performances);
+    statementData.volumeCredits = volumeCredits(statementData.performances);
     return renderPlainText(statementData);
 }
 
@@ -21,7 +22,7 @@ function renderPlainText(data) {
         result += `  ${perf.play.name}: ${usd(perf.amount)} (${perf.audience} seats)\n`;
     }
     result += `Amount owed is ${usd(data.totalAmount)}\n`;
-    result += `You earned ${volumeCredits(data.performances)} credits\n`;
+    result += `You earned ${data.volumeCredits} credits\n`;
     return result;
 }
 
