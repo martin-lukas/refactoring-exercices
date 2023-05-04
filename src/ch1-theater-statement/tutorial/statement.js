@@ -65,7 +65,7 @@ function volumeCredits(performances) {
 function volumeCreditsFor(performance) {
     let result = 0
     result += Math.max(performance.audience - 30, 0);
-    if ("comedy" === playFor(performance).type) result += Math.floor(performance.audience / 5);
+    if ("comedy" === performance.play.type) result += Math.floor(performance.audience / 5);
     return result;
 }
 
