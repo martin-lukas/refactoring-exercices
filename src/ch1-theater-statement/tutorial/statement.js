@@ -10,6 +10,7 @@ function statement(invoice) {
 function enrichPerformance(performance) {
     const result = Object.assign({}, performance);
     result.play = plays[performance.playID];
+    result.amount = amountFor(result);
     return result;
 }
 
