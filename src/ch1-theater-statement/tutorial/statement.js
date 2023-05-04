@@ -3,13 +3,13 @@ const plays = require('../mocks/plays');
 function statement(invoice) {
     const statementData = {};
     statementData.customer = invoice.customer;
-    statementData.performances = invoice.performaces;
+    statementData.performances = invoice.performances;
     return renderPlainText(statementData, invoice);
 }
 
 function renderPlainText(data, invoice) {
     let result = `Statement for ${data.customer}\n`;
-    for (let perf of invoice.performances) {
+    for (let perf of data.performances) {
         result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
     }
     result += `Amount owed is ${usd(totalAmount(invoice))}\n`;
