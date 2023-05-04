@@ -3,8 +3,14 @@ const plays = require('../mocks/plays');
 function statement(invoice) {
     const statementData = {};
     statementData.customer = invoice.customer;
-    statementData.performances = invoice.performances;
+    statementData.performances = invoice.performances.map(enrichPerformance)
     return renderPlainText(statementData);
+}
+
+function enrichPerformance(performance) {
+    const result = Object.assign({}, performance);
+    result.play = playFor(performance);
+    return result;
 }
 
 function renderPlainText(data) {
