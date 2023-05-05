@@ -17,7 +17,7 @@ function renderHtml(statement) {
     }
     result += `</table>\n`;
     result += `<p>Amount owed is <em>${usd(statement.totalAmount)}</em></p>\n`;
-    result += `<p>You earned <em>${usd(statement.totalVolumeCredits)}</em> credits</p>\n`;
+    result += `<p>You earned <em>${statement.totalVolumeCredits}</em> credits</p>\n`;
     return result;
 }
 
