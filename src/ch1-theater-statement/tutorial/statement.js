@@ -4,6 +4,10 @@ function statement(invoice) {
     return renderPlainText(createStatementData(invoice));
 }
 
+function htmlStatement(invoice) {
+    return renderHtml(createStatementData(invoice));
+}
+
 function renderHtml(statement) {
     let result = `<h1>Statement for ${statement.customer}</h1>\n`;
     result += `<table>\n`;
