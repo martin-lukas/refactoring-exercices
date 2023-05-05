@@ -38,4 +38,7 @@ function usd(amount) {
     }).format(amount);
 }
 
-module.exports = statement;
+module.exports = {
+    statement,
+    htmlStatement
+};

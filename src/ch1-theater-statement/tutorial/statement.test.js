@@ -1,5 +1,5 @@
 require('../mocks/plays');
-const statement = require('./statement');
+const { statement, htmlStatement } = require('./statement');
 
 const defaultInvoice = {
     customer: "Customer A",
