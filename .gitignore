@@ -2,3 +2,5 @@
 !.idea/jsLibraryMappings.xml
 
 node_modules/
+
+.DS_Store
